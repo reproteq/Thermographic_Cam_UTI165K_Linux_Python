@@ -107,10 +107,11 @@ while(True):
         print (Bli + LR+"Alert!! Positive COVID19 Detected"+W)
  
     #print (P+tem+W)  
-    #print (frame)
-    #salida = frame.tostring()
+    #print (frame) # print frame 
+    #salida = frame.tostring() # salida raw
+    #print salida # print salida raw
     #salida = frame.tobytes()
-    #print salida
+
     #print (struct.unpack('h',frame[0][0]))
     cam.set(cv2.CAP_PROP_CONVERT_RGB, 1)
 
