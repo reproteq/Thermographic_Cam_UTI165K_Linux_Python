@@ -4,7 +4,26 @@ import time
 import cv2
 import struct
 
+global W
+global R
+global G
+global O
+global B
+global P
+global C
+global GR
+
+W = '\033[0m'
+R = '\033[31m'
+G = '\033[32m'
+O = '\033[33m'
+B = '\033[34m'
+P = '\033[35m'
+C = '\033[36m'
+GR = '\033[37m'
+
 camera_num = 0
+
 global alto
 global ancho
 
@@ -12,9 +31,10 @@ alto = 321
 ancho = 240
 cam = cv2.VideoCapture(camera_num , cv2.CAP_V4L )
 
-
 cam.set(3,ancho)
 cam.set(4,alto)
+
+print  W + " |"+R +" T"+ R + "T"+ G +" v1.0 2020-05-29 "+ W + " |"
 if not cam.isOpened():
     print("Was not able to open camera", camera_num)
     cam.release()
@@ -45,7 +65,10 @@ while(True):
         continue
     print("TTCODE Frame OK! for temp calculation")
     #print(struct.unpack("h", frame[320][0])[0]/10)
-    print(struct.unpack("h", frame[320][0])[0]/10)
+    tempraw = (struct.unpack("h", frame[320][0])[0])
+    tempdec = tempraw[:-2]
+    print tempdec
+    
     #print (frame)
     #salida = frame.tostring()
     #salida = frame.tobytes()
