@@ -67,7 +67,7 @@ while(True):
     #print(struct.unpack("h", frame[320][0])[0]/10)
     tempraw = (struct.unpack("h", frame[320][0])[0])
     tempdec = tempraw[:-2]
-    print tempdec
+    print R,tempdec ,W
     
     #print (frame)
     #salida = frame.tostring()
