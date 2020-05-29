@@ -1,0 +1,6 @@
+raspberry pi 3 raspbian
+https://www.raspberrypi.org/downloads/raspbian/
+
+pip
+opencv 4.3.0
+numpy
