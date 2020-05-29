@@ -1,5 +1,5 @@
 #!/usr/bin/python
-### requerimets  pip opencv4.30 numpy
+### requeriments  pip opencv4.3.0 numpy
 ### Thermographic Cam Linux Python for Raspberry Pi
 ### TTCODE 2020
 
