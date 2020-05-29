@@ -1,3 +1,7 @@
+#!/usr/bin/python
+### requerimets  pip opencv4.30 numpy
+### Thermographic Cam Linux Python for Raspberry Pi
+### TTCODE 2020
 
 import numpy as np
 import time
@@ -13,15 +17,22 @@ global P
 global C
 global GR
 
-W = '\033[0m'
-R = '\033[31m'
-G = '\033[32m'
-O = '\033[33m'
-B = '\033[34m'
-P = '\033[35m'
-C = '\033[36m'
-GR = '\033[37m'
-
+W = '\033[0m'  # white (normal)
+R = '\033[31m'  # red
+G = '\033[32m'  # green
+O = '\033[33m'  # orange
+B = '\033[34m'  # blue
+P = '\033[35m'  # purple
+C = '\033[36m'  # cyan
+YL = '\033[93m'  # cyan
+GR = '\033[37m'  # gray
+LR = '\033[91m'  # LightRed     
+LG = '\033[92m'  # LightGreen   
+LY = '\033[93m'  # LightYellow  
+LB = '\033[94m'  # LightBlue    
+LM = '\033[95m'  # LightMagenta 
+LC = '\033[96m'  # LightCyan   
+Bli  = '\033[5m' # Blink   
 camera_num = 0
 
 global alto
@@ -34,7 +45,7 @@ cam = cv2.VideoCapture(camera_num , cv2.CAP_V4L )
 cam.set(3,ancho)
 cam.set(4,alto)
 
-print  W + " |"+R +" T"+ R + "T"+ G +" v1.0 2020-05-29 "+ W + " |"
+print  W + "### "+LB +" Thermographic Cam Linux "+ LR + "Powered by TTCODE "+ G +" v1.0 2020-05-29 "+ W + "|"
 if not cam.isOpened():
     print("Was not able to open camera", camera_num)
     cam.release()
@@ -63,12 +74,39 @@ while(True):
         print("Failed to fetch frame")
         time.sleep(0.1)
         continue
-    print("TTCODE Frame OK! for temp calculation")
+    print("Watting scanning temp")
     #print(struct.unpack("h", frame[320][0])[0]/10)
-    tempraw = (struct.unpack("h", frame[320][0])[0])
-    tempdec = tempraw[:-2]
-    print R,tempdec ,W
+    tempdump = (struct.unpack("h", frame[320][0])[0])
+
+    tempraw = str(tempdump)
+    temprawa = tempraw[:-1]
+    temprawb = tempraw[-1:]
+    temp = temprawa+'.'+temprawb
+    tempint = int(temprawa)
+    tempfloat = float(tempdump)
+    temp0 =35
+    temp1 = 36
+    temp2 = 37
+    temp3 = 38
     
+    #print (R+temprawa+'.'+temprawb+W)
+    #print (tempint)
+    if (tempint <= temp0):
+        print (LB+temp+W)
+            
+    if (tempint == temp1):
+        print (LG+temp+W)
+        print (G + "OK Good Temp for Human"+W)
+ 
+    if (tempint == temp2):  
+        print (O+temp+W)
+        print (Bli + LR+"Alert!! Posible Positive COVID19"+W)
+        
+    if (tempint >= temp3):
+        print (LR+temp+W)
+        print (Bli + LR+"Alert!! Positive COVID19 Detected"+W)
+ 
+    #print (P+tem+W)  
     #print (frame)
     #salida = frame.tostring()
     #salida = frame.tobytes()
