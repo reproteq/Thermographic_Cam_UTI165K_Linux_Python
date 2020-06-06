@@ -4,4 +4,4 @@
 
 cd /
 cd /home/pi/Desktop/Thermographic_Cam_UTI165K_Linux_Python
-sudo python core.py
+sudo python main.py
