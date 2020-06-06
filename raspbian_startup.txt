@@ -1,0 +1,14 @@
+chmod +x /home/pi/Desktop/Thermographic_Cam_UTI165K_Linux_Python/main.py
+chmod +x /home/pi/Desktop/Thermographic_Cam_UTI165K_Linux_Python/core.py
+chmod +x /home/pi/Desktop/Thermographic_Cam_UTI165K_Linux_Python/launcher.sh
+
+cd /etc/xdg/lxsession/LXDE-pi/
+nano autostart
+
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@lxterminal -e "/home/pi/Desktop/Thermographic_Cam_UTI165K_Linux_Python/launcher.sh"  # add this line
+@xscreensaver -no-splash
+
+
+
